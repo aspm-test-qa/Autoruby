@@ -1,9 +1,28 @@
-apiVersion: automation.cloudbees.io/v1alpha1
+piVersion: automation.cloudbees.io/v1alpha1
 kind: workflow
 name: My workflow
 on:
-  schedule:
-    - cron: 2 * * * *
+  workflow_dispatch:
+    inputs:
+      stringParam:
+        type: string
+        default: defaultValueStringParam
+        required: true
+      choiceParam:
+        type: choice
+        options:
+          - opt1default
+          - opt2
+        default: opt1default
+        required: true
+      booleanParam:
+        type: boolean
+        default: false
+        required: true
+      numberParam:
+        type: number
+        default: 1
+        required: true
 jobs:
   build:
     steps:
@@ -11,5 +30,7 @@ jobs:
         uses: docker://golang:1.20.3-alpine3.17
         shell: sh
         run: |
-          echo "Scheduled workflow"
-          echo 'date'
+          echo "stringParam is '\${{ inputs.stringParam}}'"
+          echo "choiceParam is '\${{ inputs.choiceParam}}'"
+          echo "booleanParam is '\${{ inputs.booleanParam}}'"
+          echo "numberParam is '\${{ inputs.numberParam}}'"`
