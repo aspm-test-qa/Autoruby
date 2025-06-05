@@ -92,3 +92,4 @@ See ["Contributing to Ruby"](https://docs.ruby-lang.org/en/master/contributing_m
 Ruby was originally designed and developed by Yukihiro Matsumoto (Matz) in 1995.
 
 <matz@ruby-lang.org>
+
